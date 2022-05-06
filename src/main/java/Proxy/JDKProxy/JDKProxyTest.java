@@ -29,8 +29,9 @@ public class JDKProxyTest {
         Car car = new Car();  // 被代理类 实现了Moveable接口
         InvocationHandler h = new TimeHandler(car); // 执行者 增强Moveable接口下方法的功能
         // 代理类
-        Moveable m = (Moveable) Proxy.newProxyInstance(car.getClass().getClassLoader(), car.getClass().getInterfaces(), h);
-        m.move();
+        Fixable m = (Fixable) Proxy.newProxyInstance(car.getClass().getClassLoader(), car.getClass().getInterfaces(), h);
+        m.fix();
+
         //System.out.println(m.toString()); 对 toString() equals() hashCode() 方法也会进行handler.invoke()中的代理逻辑处理
     }
 }
